@@ -1,0 +1,419 @@
+<!--
+  ============================================================
+  PERSONAL ACADEMIC WEBSITE — single file, no build step.
+  Everything in [SQUARE BRACKETS] is a placeholder. Find and
+  replace those, drop this file in a repo named
+  <yourusername>.github.io, and you are live.
+  PDFs go in a /files/ folder next to this file.
+  ============================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Your full name in the title is what makes you findable by name. -->
+<title>[Your Full Name] — [Your Field], [University]</title>
+<meta name="description" content="[Your Full Name] is a PhD candidate in [field] at [University], studying [one-line research description].">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#FCFCFA;
+    --ink:#16181C;
+    --ink-2:#3A3E45;
+    --pencil:#767A82;
+    --blue:#1C3F73;
+    --blue-bright:#2B5FA8;
+    --red:#9E3B31;
+    --rule:#DEDCD6;
+
+    --serif:"Spectral",Georgia,"Times New Roman",serif;
+    --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+    --measure:34rem;      /* the column width — roughly a journal measure */
+    --gutter:clamp(1.5rem,6vw,3rem);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:1.0625rem;
+    line-height:1.65;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- running head ---------- */
+
+  .runninghead{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+    padding:.85rem var(--gutter);
+    background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:.6875rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+  }
+  .runninghead__name{color:var(--ink); font-weight:600; white-space:nowrap}
+  .runninghead__nav{display:flex; gap:1.25rem; flex-wrap:wrap; justify-content:flex-end}
+  .runninghead__nav a{color:var(--pencil); text-decoration:none}
+  .runninghead__nav a:hover{color:var(--blue-bright)}
+
+  /* ---------- page frame ---------- */
+
+  .page{
+    max-width:var(--measure);
+    margin:0 auto;
+    padding:0 var(--gutter) 5rem;
+  }
+
+  /* ---------- title block (the offprint header) ---------- */
+
+  .titleblock{padding:clamp(3.5rem,11vw,6.5rem) 0 0}
+
+  .titleblock__name{
+    margin:0;
+    font-weight:300;
+    font-size:clamp(2.6rem,9vw,4.25rem);
+    line-height:1.02;
+    letter-spacing:-.022em;
+  }
+
+  .titleblock__rule{
+    height:2px; width:100%;
+    background:var(--blue);
+    margin:1.5rem 0 1.1rem;
+  }
+
+  .titleblock__affiliation{
+    margin:0;
+    font-family:var(--sans);
+    font-size:.8125rem;
+    line-height:1.75;
+    letter-spacing:.06em;
+    color:var(--ink-2);
+  }
+  .titleblock__affiliation strong{font-weight:600; color:var(--ink)}
+
+  /* ---------- abstract: the signature element ---------- */
+
+  .abstract{
+    margin:2.75rem 0 0;
+    padding:0 0 0 1.5rem;
+    border-left:2px solid var(--rule);
+  }
+  .abstract__label{
+    display:block;
+    margin-bottom:.7rem;
+    font-family:var(--sans);
+    font-size:.6875rem; font-weight:600;
+    letter-spacing:.18em; text-transform:uppercase;
+    color:var(--blue);
+  }
+  .abstract p{margin:0 0 .9rem; font-size:1.09rem; line-height:1.7}
+  .abstract p:last-child{margin-bottom:0}
+
+  /* ---------- primary document links ---------- */
+
+  .documents{
+    display:flex; flex-wrap:wrap; gap:.6rem;
+    margin:2.25rem 0 0; padding:0; list-style:none;
+  }
+  .documents a{
+    display:inline-block;
+    padding:.55rem 1rem;
+    border:1px solid var(--blue);
+    color:var(--blue);
+    font-family:var(--sans); font-size:.8125rem; font-weight:500;
+    letter-spacing:.02em;
+    text-decoration:none;
+    transition:background-color .15s ease,color .15s ease;
+  }
+  .documents a:hover{background:var(--blue); color:var(--paper)}
+
+  /* ---------- sections ---------- */
+
+  .section{padding:3.75rem 0 0}
+
+  .section__head{
+    display:flex; align-items:baseline; gap:.7rem;
+    margin:0 0 1.75rem;
+    padding-bottom:.55rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .section__sign{font-size:1.05rem; color:var(--blue); font-weight:400}
+  .section__title{
+    margin:0;
+    font-family:var(--sans); font-size:.75rem; font-weight:600;
+    letter-spacing:.18em; text-transform:uppercase;
+    color:var(--ink);
+  }
+
+  .subhead{
+    margin:2.25rem 0 1rem;
+    font-family:var(--sans); font-size:.6875rem; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase;
+    color:var(--pencil);
+  }
+  .subhead:first-of-type{margin-top:0}
+
+  /* ---------- bibliography (hanging indents) ---------- */
+
+  .refs{margin:0; padding:0; list-style:none}
+
+  .ref{
+    margin:0 0 1.6rem;
+    padding-left:2rem;
+    text-indent:-2rem;   /* the hanging indent */
+    line-height:1.55;
+  }
+  .ref:last-child{margin-bottom:0}
+  .ref__title{color:var(--ink)}
+  .ref__venue{color:var(--ink-2)}
+  .ref__note{color:var(--pencil); font-style:italic}
+
+  .ref__meta{
+    display:block;
+    text-indent:0;
+    margin-top:.45rem;
+    font-family:var(--sans); font-size:.78125rem;
+    letter-spacing:.02em;
+  }
+  .ref__meta a{
+    color:var(--blue-bright);
+    text-decoration:underline;
+    text-decoration-thickness:1px;
+    text-underline-offset:.2em;
+    margin-right:.9rem;
+  }
+  .ref__meta a:hover{text-decoration-thickness:2px}
+
+  .tag{
+    font-family:var(--sans); font-size:.6875rem; font-weight:600;
+    letter-spacing:.11em; text-transform:uppercase;
+  }
+  .tag--jmp{color:var(--red)}
+  .tag--status{color:var(--pencil)}
+
+  /* ---------- plain prose blocks (teaching, contact) ---------- */
+
+  .prose p{margin:0 0 1rem}
+  .prose p:last-child{margin-bottom:0}
+  .prose a{
+    color:var(--blue-bright);
+    text-decoration:underline;
+    text-decoration-thickness:1px;
+    text-underline-offset:.16em;
+  }
+  .prose a:hover{text-decoration-thickness:2px}
+
+  .courses{margin:0; padding:0; list-style:none}
+  .courses li{
+    display:flex; gap:1.25rem;
+    margin-bottom:.85rem; line-height:1.5;
+  }
+  .courses li:last-child{margin-bottom:0}
+  .courses .year{
+    flex:0 0 4.5rem;
+    font-family:var(--sans); font-size:.78125rem;
+    color:var(--pencil); padding-top:.22em;
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------- colophon ---------- */
+
+  .colophon{
+    margin-top:4.5rem; padding-top:1.25rem;
+    border-top:1px solid var(--rule);
+    font-family:var(--sans); font-size:.75rem;
+    letter-spacing:.03em; color:var(--pencil);
+  }
+  .colophon a{color:var(--pencil)}
+
+  /* ---------- accessibility & motion ---------- */
+
+  a:focus-visible,button:focus-visible{
+    outline:2px solid var(--blue-bright);
+    outline-offset:3px;
+  }
+
+  .skiplink{
+    position:absolute; left:-9999px;
+    background:var(--blue); color:var(--paper);
+    padding:.6rem 1rem; font-family:var(--sans); font-size:.8125rem;
+  }
+  .skiplink:focus{left:.75rem; top:.75rem; z-index:100}
+
+  @keyframes rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+  .titleblock > *{animation:rise .6s cubic-bezier(.2,.7,.3,1) backwards}
+  .titleblock > *:nth-child(2){animation-delay:.07s}
+  .titleblock > *:nth-child(3){animation-delay:.11s}
+  .titleblock > *:nth-child(4){animation-delay:.16s}
+  .titleblock > *:nth-child(5){animation-delay:.21s}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important}
+  }
+
+  /* ---------- print: it should look like the paper it imitates ---------- */
+
+  @media print{
+    .runninghead{display:none}
+    body{font-size:11pt; background:#fff}
+    .page{max-width:none; padding:0}
+    .ref__meta a{color:#000; text-decoration:none}
+  }
+</style>
+</head>
+
+<body>
+
+<a class="skiplink" href="#main">Skip to content</a>
+
+<header class="runninghead">
+  <span class="runninghead__name">[Lastname]</span>
+  <nav class="runninghead__nav" aria-label="Sections">
+    <a href="#research">Research</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main class="page" id="main">
+
+  <!-- ========== TITLE BLOCK ========== -->
+  <div class="titleblock">
+    <h1 class="titleblock__name">[Your Full Name]</h1>
+    <div class="titleblock__rule"></div>
+    <p class="titleblock__affiliation">
+      <strong>PhD Candidate, Department of [Department]</strong><br>
+      [University Name]<br>
+      On the job market, [2026–27]
+    </p>
+
+    <!-- The abstract is what a search committee actually reads. Three
+         sentences: what you study, what your best paper found, what
+         you are looking for. Rewrite it until it is plain. -->
+    <section class="abstract" aria-label="Research summary">
+      <span class="abstract__label">Abstract</span>
+      <p>I study [research area], with a focus on [specific question]. My work uses [methods or approach] to ask [the question that animates the whole project].</p>
+      <p>My job market paper shows that [the finding, in one plain sentence a non-specialist on the committee could repeat to a colleague].</p>
+    </section>
+
+    <ul class="documents">
+      <li><a href="files/cv.pdf">Curriculum Vitae (PDF)</a></li>
+      <li><a href="files/job-market-paper.pdf">Job Market Paper (PDF)</a></li>
+    </ul>
+  </div>
+
+  <!-- ========== RESEARCH ========== -->
+  <section class="section" id="research">
+    <div class="section__head">
+      <span class="section__sign" aria-hidden="true">§1</span>
+      <h2 class="section__title">Research</h2>
+    </div>
+
+    <h3 class="subhead">Job market paper</h3>
+    <ul class="refs">
+      <li class="ref">
+        <span class="ref__title">[Title of Your Job Market Paper].</span>
+        <span class="ref__note">Draft, [Month Year].</span>
+        <span class="ref__meta">
+          <a href="files/job-market-paper.pdf">PDF</a>
+          <a href="[link]">Abstract</a>
+          <span class="tag tag--jmp">Job market paper</span>
+        </span>
+      </li>
+    </ul>
+
+    <h3 class="subhead">Working papers</h3>
+    <ul class="refs">
+      <li class="ref">
+        <span class="ref__title">[Paper Title Goes Here]</span>
+        <span class="ref__venue">(with [Coauthor Name]).</span>
+        <span class="ref__note">Under review.</span>
+        <span class="ref__meta">
+          <a href="files/paper-two.pdf">PDF</a>
+          <span class="tag tag--status">Revise &amp; resubmit, [Journal]</span>
+        </span>
+      </li>
+      <li class="ref">
+        <span class="ref__title">[Another Paper Title].</span>
+        <span class="ref__note">In preparation.</span>
+      </li>
+    </ul>
+
+    <h3 class="subhead">Publications</h3>
+    <ul class="refs">
+      <li class="ref">
+        [Lastname, F.], &amp; [Coauthor, A.] ([Year]).
+        <span class="ref__title">[Title of the published article].</span>
+        <em class="ref__venue">[Journal Name]</em>, [12](3), [44–71].
+        <span class="ref__meta">
+          <a href="files/article-one.pdf">PDF</a>
+          <a href="https://doi.org/[doi]">DOI</a>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ========== TEACHING ========== -->
+  <section class="section" id="teaching">
+    <div class="section__head">
+      <span class="section__sign" aria-hidden="true">§2</span>
+      <h2 class="section__title">Teaching</h2>
+    </div>
+
+    <div class="prose">
+      <p>[One or two sentences on how you teach and what you are prepared to teach. Link your teaching statement and evaluations if you have them: <a href="files/teaching-statement.pdf">teaching statement</a>.]</p>
+    </div>
+
+    <ul class="courses" style="margin-top:1.5rem">
+      <li><span class="year">[2025]</span><span>[Course Title] — instructor of record, [University]</span></li>
+      <li><span class="year">[2024]</span><span>[Course Title] — teaching assistant, [University]</span></li>
+    </ul>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section" id="contact">
+    <div class="section__head">
+      <span class="section__sign" aria-hidden="true">§3</span>
+      <h2 class="section__title">Contact</h2>
+    </div>
+
+    <div class="prose">
+      <p>
+        [your.email]@[university].edu<br>
+        Department of [Department], [University]<br>
+        [City, State]
+      </p>
+      <p>
+        <a href="[Google Scholar URL]">Google Scholar</a> &middot;
+        <a href="[ORCID URL]">ORCID</a> &middot;
+        <a href="[GitHub or OSF URL]">[GitHub]</a>
+      </p>
+    </div>
+
+    <p class="colophon">
+      Last updated [Month Year].
+    </p>
+  </section>
+
+</main>
+
+</body>
+</html>
