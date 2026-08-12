@@ -1,10 +1,21 @@
 <!--
   ============================================================
-  PERSONAL ACADEMIC WEBSITE — single file, no build step.
-  Everything in [SQUARE BRACKETS] is a placeholder. Find and
-  replace those, drop this file in a repo named
-  <yourusername>.github.io, and you are live.
-  PDFs go in a /files/ folder next to this file.
+  ANDREW DOPPENBERG — academic website. Single file, no build.
+
+  Deploy: drop this file in a repo named <username>.github.io
+  (or enable Pages on any repo) and it is live.
+
+  PDFs go in a /files/ folder next to this file:
+    files/cv.pdf                 <- 02_Curriculum_Vitae/cv.pdf
+    files/writing-sample.pdf     <- 05_Writing_Sample/writing.pdf
+    files/research-statement.pdf <- 03_Research_Statement/research_statement.pdf
+    files/teaching-dossier.pdf   <- 06_Teaching_Dossier/teaching.pdf
+    files/dissertation-abstract.pdf
+                                 <- 04_Dissertation_Abstract/dissertation_abstract.pdf
+
+  Two things still to fill in, both marked TODO below:
+    1. Google Scholar / ORCID / PhilPeople URLs (commented out in §3)
+    2. The "Last updated" line in the colophon
   ============================================================
 -->
 <!DOCTYPE html>
@@ -14,8 +25,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Your full name in the title is what makes you findable by name. -->
-<title>[Your Full Name] — [Your Field], [University]</title>
-<meta name="description" content="[Your Full Name] is a PhD candidate in [field] at [University], studying [one-line research description].">
+<title>Andrew Doppenberg — Philosophy, University of Toronto</title>
+<meta name="description" content="Andrew Doppenberg is a PhD candidate in philosophy at the University of Toronto, working in computational philosophy, formal social epistemology, and the philosophy of religion.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -171,6 +182,19 @@
   }
   .subhead:first-of-type{margin-top:0}
 
+  /* areas of specialization / competence */
+
+  .areas{margin:0; padding:0}
+  .areas div{display:flex; gap:1rem; margin-bottom:.6rem; line-height:1.5}
+  .areas div:last-child{margin-bottom:0}
+  .areas dt{
+    flex:0 0 3rem;
+    font-family:var(--sans); font-size:.6875rem; font-weight:600;
+    letter-spacing:.11em; color:var(--pencil);
+    padding-top:.3em;
+  }
+  .areas dd{margin:0}
+
   /* ---------- bibliography (hanging indents) ---------- */
 
   .refs{margin:0; padding:0; list-style:none}
@@ -228,10 +252,14 @@
   }
   .courses li:last-child{margin-bottom:0}
   .courses .year{
-    flex:0 0 4.5rem;
+    flex:0 0 5.25rem;
     font-family:var(--sans); font-size:.78125rem;
     color:var(--pencil); padding-top:.22em;
     font-variant-numeric:tabular-nums;
+  }
+  .courses .detail{
+    display:block;
+    color:var(--ink-2); font-size:.9375rem;
   }
 
   /* ---------- colophon ---------- */
@@ -285,7 +313,7 @@
 <a class="skiplink" href="#main">Skip to content</a>
 
 <header class="runninghead">
-  <span class="runninghead__name">[Lastname]</span>
+  <span class="runninghead__name">Doppenberg</span>
   <nav class="runninghead__nav" aria-label="Sections">
     <a href="#research">Research</a>
     <a href="#teaching">Teaching</a>
@@ -297,12 +325,12 @@
 
   <!-- ========== TITLE BLOCK ========== -->
   <div class="titleblock">
-    <h1 class="titleblock__name">[Your Full Name]</h1>
+    <h1 class="titleblock__name">Andrew Doppenberg</h1>
     <div class="titleblock__rule"></div>
     <p class="titleblock__affiliation">
-      <strong>PhD Candidate, Department of [Department]</strong><br>
-      [University Name]<br>
-      On the job market, [2026–27]
+      <strong>PhD Candidate, Department of Philosophy</strong><br>
+      University of Toronto<br>
+      On the job market, 2026–27
     </p>
 
     <!-- The abstract is what a search committee actually reads. Three
@@ -310,13 +338,16 @@
          you are looking for. Rewrite it until it is plain. -->
     <section class="abstract" aria-label="Research summary">
       <span class="abstract__label">Abstract</span>
-      <p>I study [research area], with a focus on [specific question]. My work uses [methods or approach] to ask [the question that animates the whole project].</p>
-      <p>My job market paper shows that [the finding, in one plain sentence a non-specialist on the committee could repeat to a colleague].</p>
+      <p>I work in computational philosophy, formal social epistemology, and the philosophy of religion. My research asks what deliberately simplified formal and computational models can teach us about epistemic and moral life in communities, and I am especially interested in cases where individual reasoning produces surprising collective outcomes.</p>
+      <p>My dissertation argues that agent-based models are powerful philosophical instruments — they reveal non-obvious mechanisms, expose hidden assumptions, test robustness, and establish coherent possibilities — but that they cannot by themselves settle questions of policy, metaphysics, or theology.</p>
+      <p>My writing sample shows that recent skeptical arguments about using track records to identify experts depend on a narrow combination of assumptions: that records are over-trusted, immediately available, and based on private evidence. Weaken any one of them and track records regain their value.</p>
     </section>
 
     <ul class="documents">
       <li><a href="files/cv.pdf">Curriculum Vitae (PDF)</a></li>
-      <li><a href="files/job-market-paper.pdf">Job Market Paper (PDF)</a></li>
+      <li><a href="files/writing-sample.pdf">Writing Sample (PDF)</a></li>
+      <li><a href="files/research-statement.pdf">Research Statement (PDF)</a></li>
+      <li><a href="files/teaching-dossier.pdf">Teaching Dossier (PDF)</a></li>
     </ul>
   </div>
 
@@ -327,46 +358,81 @@
       <h2 class="section__title">Research</h2>
     </div>
 
-    <h3 class="subhead">Job market paper</h3>
+    <h3 class="subhead">Areas</h3>
+    <dl class="areas">
+      <div>
+        <dt>AOS</dt>
+        <dd>Computational philosophy, formal social epistemology, philosophy of religion</dd>
+      </div>
+      <div>
+        <dt>AOC</dt>
+        <dd>Technology ethics, bioethics, philosophy of science, logic</dd>
+      </div>
+    </dl>
+
+    <h3 class="subhead">Dissertation</h3>
+    <div class="prose">
+      <p><em>Flourishing in Diversity: The Promise and Limits of Agent-Based Models.</em> My dissertation asks what philosophers can learn from agent-based models: computer simulations that show how simple interactions can produce surprising group-level outcomes. I argue that these models can clarify mechanisms, test assumptions, and establish philosophical possibilities, but only when their conclusions are matched to what the models actually support. Through case studies on expertise, the social organization of inquiry, and the soul-making response to natural evil, I show both the promise and the limits of using models in philosophical argument.</p>
+      <p>Committee: Jonathan Weisberg (chair), Franz Huber, David James Barnett, Sara Aronowitz. Supported by a SSHRC National Doctoral Award. <a href="files/dissertation-abstract.pdf">Full abstract (PDF)</a>.</p>
+    </div>
+
+    <h3 class="subhead">Writing sample</h3>
     <ul class="refs">
       <li class="ref">
-        <span class="ref__title">[Title of Your Job Market Paper].</span>
-        <span class="ref__note">Draft, [Month Year].</span>
+        <span class="ref__title">Should We Use Track Records to Identify Experts? Some Reasons Why We Should.</span>
+        <span class="ref__note">In progress.</span>
         <span class="ref__meta">
-          <a href="files/job-market-paper.pdf">PDF</a>
-          <a href="[link]">Abstract</a>
-          <span class="tag tag--jmp">Job market paper</span>
+          <a href="files/writing-sample.pdf">PDF</a>
+          <span class="tag tag--jmp">Writing sample</span>
         </span>
       </li>
     </ul>
 
-    <h3 class="subhead">Working papers</h3>
+    <h3 class="subhead">Work in progress</h3>
     <ul class="refs">
       <li class="ref">
-        <span class="ref__title">[Paper Title Goes Here]</span>
-        <span class="ref__venue">(with [Coauthor Name]).</span>
-        <span class="ref__note">Under review.</span>
+        <span class="ref__title">The Zollman Effect and the Limits of Model-Based Policy.</span>
+        <span class="ref__venue">Even if the standard models of transient epistemic diversity were accurate, policymakers would still need answers to further questions before using them to justify interventions.</span>
         <span class="ref__meta">
-          <a href="files/paper-two.pdf">PDF</a>
-          <span class="tag tag--status">Revise &amp; resubmit, [Journal]</span>
+          <span class="tag tag--status">In progress</span>
         </span>
       </li>
       <li class="ref">
-        <span class="ref__title">[Another Paper Title].</span>
-        <span class="ref__note">In preparation.</span>
+        <span class="ref__title">Modelling the Soul-Making Theodicy.</span>
+        <span class="ref__venue">Introduces agent-based modelling into the problem of evil literature and argues for a modest conditional result about the distribution of suffering.</span>
+        <span class="ref__meta">
+          <span class="tag tag--status">In progress</span>
+        </span>
       </li>
     </ul>
 
     <h3 class="subhead">Publications</h3>
     <ul class="refs">
       <li class="ref">
-        [Lastname, F.], &amp; [Coauthor, A.] ([Year]).
-        <span class="ref__title">[Title of the published article].</span>
-        <em class="ref__venue">[Journal Name]</em>, [12](3), [44–71].
+        Doppenberg, A. (2025).
+        <span class="ref__title">Jeffrey conditionalization: against caution.</span>
+        <em class="ref__venue">Philosophical Studies</em>, 182, 3135–3148.
         <span class="ref__meta">
-          <a href="files/article-one.pdf">PDF</a>
-          <a href="https://doi.org/[doi]">DOI</a>
+          <a href="https://doi.org/10.1007/s11098-025-02390-0">DOI</a>
         </span>
+      </li>
+      <li class="ref">
+        Doppenberg, A., Meunier, M., &amp; Boutopoulos, C. (2018).
+        <span class="ref__title">A needle-like optofluidic probe enables targeted intracellular delivery by confining light–nanoparticle interaction on single cell.</span>
+        <em class="ref__venue">Nanoscale</em>, 10(46), 21871–21878.
+        <span class="ref__meta">
+          <a href="https://doi.org/10.1039/C8NR03895C">DOI</a>
+          <span class="tag tag--status">From prior work in engineering physics</span>
+        </span>
+      </li>
+    </ul>
+
+    <h3 class="subhead">Presentations</h3>
+    <ul class="refs">
+      <li class="ref">
+        <span class="ref__title">Should We Use Track Records to Identify Experts? Some Reasons Why We Should.</span>
+        <span class="ref__venue">51st Annual Meeting of the Society for Exact Philosophy, Vancouver.</span>
+        <span class="ref__note">May 2026.</span>
       </li>
     </ul>
   </section>
@@ -379,12 +445,29 @@
     </div>
 
     <div class="prose">
-      <p>[One or two sentences on how you teach and what you are prepared to teach. Link your teaching statement and evaluations if you have them: <a href="files/teaching-statement.pdf">teaching statement</a>.]</p>
+      <p>I teach with three guiding values: <em>clarity</em>, in explaining ideas plainly and presenting them in more than one format; <em>kindness</em>, in making a classroom where students are willing to ask questions; and <em>commitment</em>, in being available to students and in revising a course rather than recycling it. I have been the instructor of record for three courses at the University of Toronto and a teaching assistant for nineteen offerings of ten others, and I hold six teaching certificates from the university's Teaching Assistants' Training Program.</p>
+      <p>I am prepared to teach computational philosophy, formal and social epistemology, ethics of AI and technology, and philosophy of religion at the upper-year level, and introductory philosophy, critical thinking, logic, epistemology, philosophy of science, metaphysics, philosophy of mind, ethics, and bioethics at the lower-year level. Full details, evaluations, and sample materials are in my <a href="files/teaching-dossier.pdf">teaching dossier</a>.</p>
     </div>
 
     <ul class="courses" style="margin-top:1.5rem">
-      <li><span class="year">[2025]</span><span>[Course Title] — instructor of record, [University]</span></li>
-      <li><span class="year">[2024]</span><span>[Course Title] — teaching assistant, [University]</span></li>
+      <li>
+        <span class="year">2024–26</span>
+        <span>Instructor of record, Department of Philosophy, University of Toronto
+          <span class="detail">Puzzles and Paradoxes · Philosophy at the Movies · Death and Dying</span>
+        </span>
+      </li>
+      <li>
+        <span class="year">2025–26</span>
+        <span>Embedded Ethics Graduate Teaching Fellow, Department of Computer Science and the Schwartz Reisman Institute for Technology and Society
+          <span class="detail">Language models and property rights · Contact tracing, data collection, and privacy · Disability and software accessibility · Data rights</span>
+        </span>
+      </li>
+      <li>
+        <span class="year">2021–26</span>
+        <span>Teaching assistant, Department of Philosophy, University of Toronto
+          <span class="detail">Philosophy of AI · Ethics of AI · Ethics and Data · Minds and Machines · Philosophy of Science · Probability and Inductive Logic · Choice and Chance · Persons, Minds, and Bodies · Philosophy of Religion · Early Modern Philosophy</span>
+        </span>
+      </li>
     </ul>
   </section>
 
@@ -397,19 +480,23 @@
 
     <div class="prose">
       <p>
-        [your.email]@[university].edu<br>
-        Department of [Department], [University]<br>
-        [City, State]
+        <a href="mailto:andrew.doppenberg@mail.utoronto.ca">andrew.doppenberg@mail.utoronto.ca</a><br>
+        Department of Philosophy, University of Toronto<br>
+        170 St. George Street, Toronto, ON M5R 2M8
       </p>
+
+      <!-- TODO: paste your profile URLs and uncomment. Left out rather than
+           left broken — a dead link on a job market page is worse than none.
       <p>
-        <a href="[Google Scholar URL]">Google Scholar</a> &middot;
-        <a href="[ORCID URL]">ORCID</a> &middot;
-        <a href="[GitHub or OSF URL]">[GitHub]</a>
+        <a href="https://scholar.google.com/citations?user=YOUR_ID">Google Scholar</a> &middot;
+        <a href="https://orcid.org/0000-0000-0000-0000">ORCID</a> &middot;
+        <a href="https://philpeople.org/profiles/andrew-doppenberg">PhilPeople</a>
       </p>
+      -->
     </div>
 
     <p class="colophon">
-      Last updated [Month Year].
+      Last updated August 2026.
     </p>
   </section>
 
