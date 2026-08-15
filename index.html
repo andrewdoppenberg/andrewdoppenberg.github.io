@@ -49,7 +49,9 @@
     --serif:"Spectral",Georgia,"Times New Roman",serif;
     --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
-    --measure:34rem;      /* the column width — roughly a journal measure */
+    --measure:44rem;      /* the column width — roughly a journal measure.
+                             note: border-box, so the gutter padding sits
+                             inside this. text column = measure - 2*gutter. */
     --gutter:clamp(1.5rem,6vw,3rem);
   }
 
