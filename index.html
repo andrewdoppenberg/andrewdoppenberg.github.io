@@ -118,7 +118,7 @@
   /* affiliation and portrait share a row; the portrait drops below
      when the column gets too narrow to hold both. */
   .titleblock__meta{
-    display:flex; flex-wrap:wrap; align-items:flex-start;
+    display:flex; flex-wrap:wrap; align-items:center;
     gap:1.5rem;
   }
 
@@ -135,8 +135,9 @@
 
   .portrait{
     flex:0 0 auto;
-    width:7.5rem; height:7.5rem;
+    width:6.5rem; height:6.5rem;
     object-fit:cover;
+    object-position:50% 20%;   /* bias toward the face, not the chest */
     border:1px solid var(--rule);
   }
 
