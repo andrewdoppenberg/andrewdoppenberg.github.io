@@ -10,11 +10,10 @@
   character-sensitive:
     files/headshot.jpg           <- 800x800, square crop
     files/cv.pdf                 <- 02_Curriculum_Vitae/cv.pdf
-    files/writing_sample.pdf     <- 05_Writing_Sample/writing.pdf
-    files/research_statement.pdf <- 03_Research_Statement/research_statement.pdf
-    files/teaching_dossier.pdf   <- 06_Teaching_Dossier/teaching.pdf
-    files/dissertation_abstract.pdf
-                                 <- 04_Dissertation_Abstract/dissertation_abstract.pdf
+
+  The CV is the only document published here. The research statement,
+  writing sample, teaching dossier, and dissertation abstract are sent
+  on request rather than posted — do not add them back to /files/.
 
   Two things still to fill in, both marked TODO below:
     1. Google Scholar / ORCID / PhilPeople URLs (commented out in §3)
@@ -135,7 +134,10 @@
 
   .portrait{
     flex:0 0 auto;
-    width:6.5rem; height:6.5rem;
+    /* grows with the viewport but never so far that it outweighs the
+       name above it; wraps below the affiliation on narrow screens. */
+    --portrait-size:clamp(7.5rem,19vw,9rem);
+    width:var(--portrait-size); height:var(--portrait-size);
     object-fit:cover;
     object-position:50% 20%;   /* bias toward the face, not the chest */
     border:1px solid var(--rule);
@@ -370,9 +372,6 @@
 
     <ul class="documents">
       <li><a href="files/cv.pdf">Curriculum Vitae (PDF)</a></li>
-      <li><a href="files/writing_sample.pdf">Writing Sample (PDF)</a></li>
-      <li><a href="files/research_statement.pdf">Research Statement (PDF)</a></li>
-      <li><a href="files/teaching_dossier.pdf">Teaching Dossier (PDF)</a></li>
     </ul>
   </div>
 
@@ -398,7 +397,7 @@
     <h3 class="subhead">Dissertation</h3>
     <div class="prose">
       <p><em>Flourishing in Diversity: The Promise and Limits of Agent-Based Models.</em> My dissertation asks what philosophers can learn from agent-based models: computer simulations that show how simple interactions can produce surprising group-level outcomes. I argue that these models can clarify mechanisms, test assumptions, and establish philosophical possibilities, but only when their conclusions are matched to what the models actually support. Through case studies on expertise, the social organization of inquiry, and the soul-making response to natural evil, I show both the promise and the limits of using models in philosophical argument.</p>
-      <p>Committee: Jonathan Weisberg (chair), Franz Huber, David James Barnett, Sara Aronowitz. Supported by a SSHRC National Doctoral Award. <a href="files/dissertation_abstract.pdf">Full abstract (PDF)</a>.</p>
+      <p>Committee: Jonathan Weisberg (chair), Franz Huber, David James Barnett, Sara Aronowitz. Supported by a SSHRC National Doctoral Award. The full abstract is available on request.</p>
     </div>
 
     <h3 class="subhead">Writing sample</h3>
@@ -407,8 +406,8 @@
         <span class="ref__title">Should We Use Track Records to Identify Experts? Some Reasons Why We Should.</span>
         <span class="ref__note">In progress.</span>
         <span class="ref__meta">
-          <a href="files/writing_sample.pdf">PDF</a>
           <span class="tag tag--jmp">Writing sample</span>
+          <span class="tag tag--status">Available on request</span>
         </span>
       </li>
     </ul>
@@ -471,14 +470,14 @@
 
     <div class="prose">
       <p>I teach with three guiding values: <em>clarity</em>, in explaining ideas plainly and presenting them in more than one format; <em>kindness</em>, in making a classroom where students are willing to ask questions; and <em>commitment</em>, in being available to students and in revising a course rather than recycling it. I have been the course instructor for four offerings of three courses at the University of Toronto and a teaching assistant for nineteen offerings of eleven others, and I hold six teaching certificates from the university's Teaching Assistants' Training Program.</p>
-      <p>I am prepared to teach death and dying, formal epistemology, computational philosophy, social epistemology, philosophy of religion, and the ethics of AI and technology at the upper-year level, and puzzles and paradoxes, philosophy at the movies, critical reasoning, logic, introductory philosophy, epistemology, philosophy of science, philosophy of mind, metaphysics, ethics, bioethics, and the history of philosophy from ancient through analytic at the lower-year level. Full details, evaluations, and sample materials are in my <a href="files/teaching_dossier.pdf">teaching dossier</a>.</p>
+      <p>I am prepared to teach death and dying, formal epistemology, computational philosophy, social epistemology, philosophy of religion, and the ethics of AI and technology at the upper-year level, and puzzles and paradoxes, philosophy at the movies, critical reasoning, logic, introductory philosophy, epistemology, philosophy of science, philosophy of mind, metaphysics, ethics, bioethics, and the history of philosophy from ancient through analytic at the lower-year level. Full details, evaluations, and sample materials are available in my teaching dossier on request.</p>
     </div>
 
     <ul class="courses" style="margin-top:1.5rem">
       <li>
         <span class="year">2024–27</span>
         <span><strong>Course Instructor</strong>, Department of Philosophy, University of Toronto
-          <span class="detail">Puzzles and Paradoxes · Philosophy at the Movies · Death and Dying · Critical Reasoning (from 2026)</span>
+          <span class="detail">Puzzles and Paradoxes · Philosophy at the Movies · Death and Dying · Critical Reasoning</span>
         </span>
       </li>
       <li>
