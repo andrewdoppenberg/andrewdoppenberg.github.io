@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Your full name in the title is what makes you findable by name. -->
+<title>Andrew Doppenberg — Philosophy, University of Toronto</title>
+<meta name="description" content="Andrew Doppenberg is a philosopher at the University of Toronto working in computational philosophy, social epistemology, and the philosophy of religion. He defended his PhD in August 2026.">
+<link rel="canonical" href="https://andrewdoppenberg.github.io/">
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://andrewdoppenberg.github.io/">
+<meta property="og:title" content="Andrew Doppenberg — Philosophy, University of Toronto">
+<meta property="og:description" content="Philosopher at the University of Toronto working in computational philosophy, social epistemology, and the philosophy of religion. On the job market, 2026–27.">
+<meta property="og:image" content="https://andrewdoppenberg.github.io/files/headshot.jpg">
+<meta property="og:image:alt" content="Andrew Doppenberg">
+<meta property="profile:first_name" content="Andrew">
+<meta property="profile:last_name" content="Doppenberg">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#FCFCFA;
+    --ink:#16181C;
+    --ink-2:#3A3E45;
+    --pencil:#6A6E76;
+    --blue:#1C3F73;
+    --blue-bright:#2B5FA8;
+    --red:#9E3B31;
+    --rule:#DEDCD6;
+
+    --serif:"Spectral",Georgia,"Times New Roman",serif;
+    --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+    --measure:44rem;      /* the column width — roughly a journal measure.
+                             note: border-box, so the gutter padding sits
+                             inside this. text column = measure - 2*gutter. */
+    --gutter:clamp(1.5rem,6vw,3rem);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:1.0625rem;
+    line-height:1.65;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- running head ---------- */
+
+  .runninghead{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+    padding:.85rem var(--gutter);
+    background:var(--paper);
+    background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:.6875rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+  }
+  .runninghead__name{color:var(--ink); font-weight:600; white-space:nowrap}
+  .runninghead__nav{display:flex; gap:1.25rem; flex-wrap:wrap; justify-content:flex-end}
+  .runninghead__nav a{color:var(--pencil); text-decoration:none}
+  .runninghead__nav a:hover{color:var(--blue-bright)}
+
+  /* ---------- page frame ---------- */
+
+  .page{
+    max-width:var(--measure);
+    margin:0 auto;
+    padding:0 var(--gutter) 5rem;
+  }
+
+  /* ---------- title block (the offprint header) ---------- */
+
+  .titleblock{padding:clamp(3.5rem,11vw,6.5rem) 0 0}
+
+  .titleblock__name{
+    margin:0;
+    font-weight:300;
+    font-size:clamp(2.6rem,9vw,4.25rem);
+    line-height:1.02;
+    letter-spacing:-.022em;
+  }
+
+  .titleblock__rule{
+    height:2px; width:100%;
+    background:var(--blue);
+    margin:1.5rem 0 1.1rem;
+  }
+
+  /* affiliation and portrait share a row; the portrait drops below
+     when the column gets too narrow to hold both. */
+  .titleblock__meta{
+    display:flex; flex-wrap:wrap; align-items:center;
+    gap:1.5rem;
+  }
+
+  .titleblock__affiliation{
+    flex:1 1 15rem;
+    margin:0;
+    font-family:var(--sans);
+    font-size:.8125rem;
+    line-height:1.75;
+    letter-spacing:.06em;
+    color:var(--ink-2);
+  }
+  .titleblock__affiliation strong{font-weight:600; color:var(--ink)}
+
+  .portrait{
+    flex:0 0 auto;
+    /* grows with the viewport but never so far that it outweighs the
+       name above it; wraps below the affiliation on narrow screens. */
+    --portrait-size:clamp(7.5rem,19vw,9rem);
+    width:var(--portrait-size); height:var(--portrait-size);
+    object-fit:cover;
+    object-position:50% 20%;   /* bias toward the face, not the chest */
+    border:1px solid var(--rule);
+  }
+
+  /* ---------- abstract: the signature element ---------- */
+
+  .abstract{
+    margin:2.75rem 0 0;
+    padding:0 0 0 1.5rem;
+    border-left:2px solid var(--rule);
+  }
+  .abstract__label{
+    display:block;
+    margin-bottom:.7rem;
+    font-family:var(--sans);
+    font-size:.6875rem; font-weight:600;
+    letter-spacing:.18em; text-transform:uppercase;
+    color:var(--blue);
+  }
+  .abstract p{margin:0 0 .9rem; font-size:1.09rem; line-height:1.7}
+  .abstract p:last-child{margin-bottom:0}
+
+  /* ---------- primary document links ---------- */
+
+  .documents{
+    display:flex; flex-wrap:wrap; gap:.6rem;
+    margin:2.25rem 0 0; padding:0; list-style:none;
+  }
+  .documents a{
+    display:inline-block;
+    padding:.55rem 1rem;
+    border:1px solid var(--blue);
+    color:var(--blue);
+    font-family:var(--sans); font-size:.8125rem; font-weight:500;
+    letter-spacing:.02em;
+    text-decoration:none;
+    transition:background-color .15s ease,color .15s ease;
+  }
+  .documents a:hover{background:var(--blue); color:var(--paper)}
+
+  /* ---------- sections ---------- */
+
+  .section{padding:3.75rem 0 0}
+
+  .section__head{
+    display:flex; align-items:baseline; gap:.7rem;
+    margin:0 0 1.75rem;
+    padding-bottom:.55rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .section__sign{font-size:1.05rem; color:var(--blue); font-weight:400}
+  .section__title{
+    margin:0;
+    font-family:var(--sans); font-size:.75rem; font-weight:600;
+    letter-spacing:.18em; text-transform:uppercase;
+    color:var(--ink);
+  }
+
+  .subhead{
+    margin:2.25rem 0 1rem;
+    font-family:var(--sans); font-size:.6875rem; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase;
+    color:var(--pencil);
+  }
+  .subhead:first-of-type{margin-top:0}
+
+  /* areas of specialization / competence */
+
+  .areas{margin:0; padding:0}
+  .areas div{display:flex; gap:1rem; margin-bottom:.6rem; line-height:1.5}
+  .areas div:last-child{margin-bottom:0}
+  .areas dt{
+    flex:0 0 3rem;
+    font-family:var(--sans); font-size:.6875rem; font-weight:600;
+    letter-spacing:.11em; color:var(--pencil);
+    padding-top:.3em;
+  }
+  .areas dd{margin:0}
+
+  /* ---------- bibliography (hanging indents) ---------- */
+
+  .refs{margin:0; padding:0; list-style:none}
+
+  .ref{
+    margin:0 0 1.6rem;
+    padding-left:2rem;
+    text-indent:-2rem;   /* the hanging indent */
+    line-height:1.55;
+  }
+  .ref:last-child{margin-bottom:0}
+  .ref__title{color:var(--ink)}
+  .ref__venue{color:var(--ink-2)}
+  .ref__note{color:var(--pencil); font-style:italic}
+
+  .ref__meta{
+    display:block;
+    text-indent:0;
+    margin-top:.45rem;
+    font-family:var(--sans); font-size:.78125rem;
+    letter-spacing:.02em;
+  }
+  .ref__meta a{
+    color:var(--blue-bright);
+    text-decoration:underline;
+    text-decoration-thickness:1px;
+    text-underline-offset:.2em;
+    margin-right:.9rem;
+  }
+  .ref__meta a:hover{text-decoration-thickness:2px}
+
+  .tag{
+    font-family:var(--sans); font-size:.6875rem; font-weight:600;
+    letter-spacing:.11em; text-transform:uppercase;
+  }
+  .ref__meta .tag+.tag{margin-left:.9rem}
+  .tag--jmp{color:var(--red)}
+  .tag--status{color:var(--pencil)}
+
+  /* ---------- plain prose blocks (teaching, contact) ---------- */
+
+  .prose p{margin:0 0 1rem}
+  .prose p:last-child{margin-bottom:0}
+  .prose a{
+    color:var(--blue-bright);
+    text-decoration:underline;
+    text-decoration-thickness:1px;
+    text-underline-offset:.16em;
+  }
+  .prose a:hover{text-decoration-thickness:2px}
+
+  .courses{margin:0; padding:0; list-style:none}
+  .courses li{
+    display:flex; gap:1.25rem;
+    margin-bottom:.85rem; line-height:1.5;
+  }
+  .courses li:last-child{margin-bottom:0}
+  .courses .year{
+    flex:0 0 5.25rem;
+    font-family:var(--sans); font-size:.78125rem;
+    color:var(--pencil); padding-top:.22em;
+    font-variant-numeric:tabular-nums;
+  }
+  .courses .detail{
+    display:block;
+    color:var(--ink-2); font-size:.9375rem;
+  }
+
+  /* ---------- colophon ---------- */
+
+  .colophon{
+    margin-top:4.5rem; padding-top:1.25rem;
+    border-top:1px solid var(--rule);
+    font-family:var(--sans); font-size:.75rem;
+    letter-spacing:.03em; color:var(--pencil);
+  }
+  .colophon a{color:var(--pencil)}
+
+  /* ---------- accessibility & motion ---------- */
+
+  a:focus-visible,button:focus-visible{
+    outline:2px solid var(--blue-bright);
+    outline-offset:3px;
+  }
+
+  .skiplink{
+    position:absolute; left:-9999px;
+    background:var(--blue); color:var(--paper);
+    padding:.6rem 1rem; font-family:var(--sans); font-size:.8125rem;
+  }
+  .skiplink:focus{left:.75rem; top:.75rem; z-index:100}
+
+  @keyframes rise{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+  .titleblock > *{animation:rise .6s cubic-bezier(.2,.7,.3,1) backwards}
+  .titleblock > *:nth-child(2){animation-delay:.07s}
+  .titleblock > *:nth-child(3){animation-delay:.11s}
+  .titleblock > *:nth-child(4){animation-delay:.16s}
+  .titleblock > *:nth-child(5){animation-delay:.21s}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important}
+  }
+
+  /* ---------- print: it should look like the paper it imitates ---------- */
+
+  @media print{
+    .runninghead{display:none}
+    .titleblock > *{animation:none !important}   /* never print a blank header */
+    body{font-size:11pt; background:#fff}
+    .page{max-width:none; padding:0}
+    .ref__meta a{color:#000; text-decoration:none}
+  }
+</style>
+</head>
+
+<body>
+
+<a class="skiplink" href="#main">Skip to content</a>
+
+<header class="runninghead">
+  <span class="runninghead__name">Doppenberg</span>
+  <nav class="runninghead__nav" aria-label="Sections">
+    <a href="#education">Education</a>
+    <a href="#research">Research</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main class="page" id="main">
+
+  <!-- ========== TITLE BLOCK ========== -->
+  <div class="titleblock">
+    <h1 class="titleblock__name">Andrew Doppenberg</h1>
+    <div class="titleblock__rule"></div>
+    <div class="titleblock__meta">
+      <p class="titleblock__affiliation">
+        <strong>PhD in Philosophy</strong><br>
+        University of Toronto<br>
+        Defended August 2026 · Degree conferred October 2026<br>
+        On the job market, 2026–27
+      </p>
+      <img class="portrait" src="files/headshot.jpg" width="512" height="512"
+           alt="Andrew Doppenberg" decoding="async">
+    </div>
+
+    <section class="abstract" aria-label="Research summary">
+      <span class="abstract__label">Abstract</span>
+      <p>I work in computational philosophy, social epistemology, and the philosophy of religion. My research asks what deliberately simplified formal and computational models can teach us about epistemic and moral life in communities, and I am especially interested in cases where individual reasoning produces surprising collective outcomes.</p>
+      <p>My dissertation argues that agent-based models are powerful philosophical instruments — they reveal non-obvious mechanisms, expose hidden assumptions, test robustness, and establish coherent possibilities — but that they cannot by themselves settle questions of policy, metaphysics, or theology.</p>
+      <p>A paper in progress shows that recent skeptical arguments about using track records to identify experts depend on a narrow combination of assumptions: that records are over-trusted, immediately available, and based on private evidence. Weaken any one of them and track records regain their value.</p>
+    </section>
+
+    <ul class="documents">
+      <li><a href="files/cv.pdf">Curriculum Vitae (PDF)</a></li>
+    </ul>
+  </div>
+
+  <!-- ========== EDUCATION ========== -->
+  <section class="section" id="education">
+    <div class="section__head">
+      <span class="section__sign" aria-hidden="true">§1</span>
+      <h2 class="section__title">Education</h2>
+    </div>
+
+    <ul class="courses">
+      <li>
+        <span class="year">2026</span>
+        <span><strong>PhD, Philosophy</strong>, University of Toronto
+          <span class="detail">Defended August 2026 · Degree conferred October 2026</span>
+        </span>
+      </li>
+      <li>
+        <span class="year">2021</span>
+        <span><strong>BA, Philosophy (Honours)</strong>, University of British Columbia</span>
+      </li>
+      <li>
+        <span class="year">2019</span>
+        <span><strong>BASc, Engineering Physics</strong>, University of British Columbia</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ========== RESEARCH ========== -->
+  <section class="section" id="research">
+    <div class="section__head">
+      <span class="section__sign" aria-hidden="true">§2</span>
+      <h2 class="section__title">Research</h2>
+    </div>
+
+    <h3 class="subhead">Areas</h3>
+    <dl class="areas">
+      <div>
+        <dt>AOS</dt>
+        <dd>Computational philosophy, social epistemology, philosophy of religion</dd>
+      </div>
+      <div>
+        <dt>AOC</dt>
+        <dd>Ethics (intro, AI, bioethics), philosophy of science, logic</dd>
+      </div>
+    </dl>
+
+    <h3 class="subhead">Dissertation</h3>
+    <div class="prose">
+      <p><em>Flourishing in Diversity: The Promise and Limits of Agent-Based Models.</em> My dissertation asks what philosophers can learn from agent-based models: computer simulations that show how simple interactions can produce surprising group-level outcomes. I argue that these models can clarify mechanisms, test assumptions, and establish philosophical possibilities, but only when their conclusions are matched to what the models actually support. Through case studies on expertise, the social organization of inquiry, and the soul-making response to natural evil, I show both the promise and the limits of using models in philosophical argument.</p>
+      <p>Defended August 2026. Committee: Jonathan Weisberg (chair), Franz Huber, David James Barnett, and Sara Aronowitz. Examiners: Justin Bruner (external) and Yonathan Fiat (internal). Supported by a SSHRC National Doctoral Award. The full abstract is available on request.</p>
+    </div>
+
+    <h3 class="subhead">Publications</h3>
+    <ul class="refs">
+      <li class="ref">
+        Doppenberg, A. (2025).
+        <span class="ref__title">Jeffrey conditionalization: Against caution.</span>
+        <em class="ref__venue">Philosophical Studies</em>, 182, 3135–3148.
+        <span class="ref__meta">
+          <a href="https://doi.org/10.1007/s11098-025-02390-0">DOI</a>
+        </span>
+      </li>
+      <li class="ref">
+        Doppenberg, A., Meunier, M., &amp; Boutopoulos, C. (2018).
+        <span class="ref__title">A needle-like optofluidic probe enables targeted intracellular delivery by confining light–nanoparticle interaction on single cell.</span>
+        <em class="ref__venue">Nanoscale</em>, 10(46), 21871–21878.
+        <span class="ref__meta">
+          <a href="https://doi.org/10.1039/C8NR03895C">DOI</a>
+          <span class="tag tag--status">From prior work in engineering physics</span>
+        </span>
+      </li>
+    </ul>
+
+    <h3 class="subhead">Work in progress</h3>
+    <ul class="refs">
+      <li class="ref">
+        <span class="ref__title">Should We Use Track Records to Identify Experts? Some Reasons Why We Should.</span>
+        <span class="ref__venue">Argues that recent skeptical arguments about identifying experts by their track records depend on a combination of assumptions that rarely holds together.</span>
+        <span class="ref__meta">
+          <span class="tag tag--jmp">Job market paper</span>
+          <span class="tag tag--status">In progress · available on request</span>
+        </span>
+      </li>
+      <li class="ref">
+        <span class="ref__title">The Zollman Effect and the Limits of Model-Based Policy.</span>
+        <span class="ref__venue">Even if the standard models of transient epistemic diversity were accurate, policymakers would still need answers to further questions before using them to justify interventions.</span>
+        <span class="ref__meta">
+          <span class="tag tag--status">In progress</span>
+        </span>
+      </li>
+      <li class="ref">
+        <span class="ref__title">Modelling the Soul-Making Theodicy.</span>
+        <span class="ref__venue">Introduces agent-based modelling into the problem of evil literature and argues for a modest conditional result about the distribution of suffering.</span>
+        <span class="ref__meta">
+          <span class="tag tag--status">In progress</span>
+        </span>
+      </li>
+    </ul>
+
+    <h3 class="subhead">Presentations</h3>
+    <ul class="refs">
+      <li class="ref">
+        <span class="ref__title">Should We Use Track Records to Identify Experts? Some Reasons Why We Should.</span>
+        <span class="ref__venue">51st Annual Meeting of the Society for Exact Philosophy, Vancouver.</span>
+        <span class="ref__note">May 2026.</span>
+      </li>
+    </ul>
+
+    <h3 class="subhead">Selected awards</h3>
+    <ul class="courses">
+      <li>
+        <span class="year">2024–26</span>
+        <span>SSHRC National Doctoral Award
+          <span class="detail">Social Sciences and Humanities Research Council of Canada</span>
+        </span>
+      </li>
+      <li>
+        <span class="year">2022–23</span>
+        <span>Ontario Graduate Scholarship
+          <span class="detail">Government of Ontario</span>
+        </span>
+      </li>
+      <li>
+        <span class="year">2021</span>
+        <span>Philosophy of Science Award
+          <span class="detail">University of Toronto, Department of Philosophy</span>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ========== TEACHING ========== -->
+  <section class="section" id="teaching">
+    <div class="section__head">
+      <span class="section__sign" aria-hidden="true">§3</span>
+      <h2 class="section__title">Teaching</h2>
+    </div>
+
+    <div class="prose">
+      <p>I teach with three guiding values: <em>clarity</em>, in explaining ideas plainly and presenting them in more than one format; <em>kindness</em>, in making a classroom where students are willing to ask questions; and <em>commitment</em>, in being available to students and in revising a course rather than recycling it. I have been the course instructor for four offerings of three courses at the University of Toronto, with a fourth course scheduled for 2026–27, and a teaching assistant for twenty offerings of twelve courses across the philosophy department and the Institute for the History and Philosophy of Science and Technology. I hold six teaching certificates from the university's Teaching Assistants' Training Program.</p>
+      <p>I am prepared to teach death and dying, formal epistemology, computational philosophy, social epistemology, philosophy of religion, and the ethics of AI and technology at the upper-year level, and puzzles and paradoxes, philosophy at the movies, critical reasoning, logic, introductory philosophy, epistemology, philosophy of science, philosophy of mind, metaphysics, ethics, bioethics, and the history of philosophy from ancient through analytic at the lower-year level. Full details, evaluations, and sample materials are available in my teaching dossier on request.</p>
+    </div>
+
+    <ul class="courses" style="margin-top:1.5rem">
+      <li>
+        <span class="year">2024–27</span>
+        <span><strong>Course Instructor</strong>, Department of Philosophy, University of Toronto
+          <span class="detail">Puzzles and Paradoxes · Philosophy at the Movies · Death and Dying · Critical Reasoning (scheduled, 2026–27)</span>
+        </span>
+      </li>
+      <li>
+        <span class="year">2025–26</span>
+        <span><strong>Embedded Ethics Graduate Teaching Fellow</strong>, Department of Computer Science and the Schwartz Reisman Institute for Technology and Society
+          <span class="detail">Language models and property rights · Contact tracing, data collection, and privacy · Disability and software accessibility · Data rights</span>
+        </span>
+      </li>
+      <li>
+        <span class="year">2021–26</span>
+        <span><strong>Teaching Assistant</strong>, Department of Philosophy, University of Toronto
+          <span class="detail">Philosophy of AI · Introduction to Ethics · Ethics of AI · Ethics and Data · Minds and Machines · Philosophy of Science · Probability and Inductive Logic · Choice and Chance · Persons, Minds, and Bodies · Philosophy of Religion · Early Modern Philosophy</span>
+        </span>
+      </li>
+      <li>
+        <span class="year">2021</span>
+        <span><strong>Teaching Assistant</strong>, Institute for the History and Philosophy of Science and Technology, University of Toronto
+          <span class="detail">Introduction to the Philosophy of Science</span>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section" id="contact">
+    <div class="section__head">
+      <span class="section__sign" aria-hidden="true">§4</span>
+      <h2 class="section__title">Contact</h2>
+    </div>
+
+    <div class="prose">
+      <p>
+        <a href="mailto:andrew.doppenberg@mail.utoronto.ca">andrew.doppenberg@mail.utoronto.ca</a><br>
+        Department of Philosophy, University of Toronto<br>
+        170 St. George Street, Toronto, ON M5R 2M8
+      </p>
+
+      <p>
+        <a href="https://orcid.org/0009-0007-6315-3978">ORCID 0009-0007-6315-3978</a>
+      </p>
+    </div>
+
+    <p class="colophon">
+      Last updated September 2026.
+    </p>
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Andrew Doppenberg",
+  "givenName": "Andrew",
+  "familyName": "Doppenberg",
+  "url": "https://andrewdoppenberg.github.io/",
+  "image": "https://andrewdoppenberg.github.io/files/headshot.jpg",
+  "email": "mailto:andrew.doppenberg@mail.utoronto.ca",
+  "sameAs": ["https://orcid.org/0009-0007-6315-3978"],
+  "identifier": "https://orcid.org/0009-0007-6315-3978",
+  "jobTitle": "Philosopher",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Toronto, Department of Philosophy"
+  },
+  "alumniOf": [
+    {"@type": "CollegeOrUniversity", "name": "University of Toronto"},
+    {"@type": "CollegeOrUniversity", "name": "University of British Columbia"}
+  ],
+  "knowsAbout": [
+    "Computational philosophy",
+    "Social epistemology",
+    "Philosophy of religion",
+    "Agent-based modelling",
+    "Formal epistemology"
+  ]
+}
+</script>
+
+</body>
+</html>
