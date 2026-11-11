@@ -38,13 +38,16 @@ clean.save("files/headshot.jpg", "JPEG", quality=85, optimize=True, progressive=
 
 ## Conventions worth keeping
 
-- The abstract in the title block is the part a search committee actually
-  reads. Three sentences: what you study, what your best paper found, what you
-  are looking for.
+- The abstract in the title block is the part a search committee reads first.
+  It gives the research areas and methods.
+- Nothing on the site, including `files/cv.pdf`, gives the title or a result of
+  an unpublished paper, because those papers are under anonymous review. The
+  talk title under Presentations is the one exception.
 - Section numbers (`§1`–`§4`) are decorative and marked `aria-hidden`. Renumber
   them together if a section is added or removed.
 - Every colour is a custom property in `:root`. Small text uses `--pencil`,
-  which sits at 4.98:1 against `--paper`. Do not lighten it past 4.5:1.
+  which has a contrast ratio of 4.98:1 against `--paper`. Do not lighten it
+  past 4.5:1.
 - Links are omitted rather than left broken. A dead link on a job market page
   is worse than no link.
 - Check the page at <https://validator.w3.org/nu/> after structural edits.
